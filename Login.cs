@@ -17,10 +17,10 @@ namespace Projeto_produtos
         }
         public void Logar(Usuario usuario)
         {
-            Console.WriteLine(@$"
-            Hora de logar!!
-
-Insira seu email cadastrado: ");
+            Console.ForegroundColor=ConsoleColor.Green;
+            Console.WriteLine($"Hora de Logar!!");
+            Console.ResetColor();
+            Console.WriteLine($"Insira seu email cadastrado: ");
             string email = Console.ReadLine();
 
             Console.WriteLine($"Insira sua senha: ");
@@ -29,13 +29,16 @@ Insira seu email cadastrado: ");
             if (email == usuario.Email && senha == usuario.Senha)
             {
                 this.Logado = true;
+                Console.ForegroundColor=ConsoleColor.Green;
                 Console.WriteLine($"Login efetuado com sucesso!");
-
+                Console.ResetColor();
             }
             else
             {
                 this.Logado = false;
+                Console.ForegroundColor=ConsoleColor.Red;
                 Console.WriteLine($"Falha ao logar!");
+                Console.ResetColor();
 
             }
 
@@ -56,22 +59,21 @@ Insira seu email cadastrado: ");
 
 
                 Console.WriteLine(@$"
+                -----------------------
             [1] - Cadastrar Produto
             [2] - Listar Produto
             [3] - Remover Produto
-            -----------------------
             [4] - Cadastrar Marca
             [5] - Listar Marca
             [6] - Remover Marca
-
-            [0] - Sair
-            ");
+            [0] - Sair");
 
                 opcao = Console.ReadLine();
                 switch (opcao)
                 {
                     case "1":
                         produto.Cadastrar();
+
                         break;
                     case "2":
                         produto.Listar();
@@ -84,22 +86,27 @@ Insira seu email cadastrado: ");
                         produto.Deletar(codigoProduto);
                         break;
                     case "4":
-                        marca.Cadastrar();
+                        Marca.Cadastrar();
                         break;
                     case "5":
-                        marca.Listar();
+                        Marca.Listar();
                         break;
                     case "6":
                         Console.WriteLine($"Informe o Codigo a ser removido: ");
                         int codigoMarca = int.Parse(Console.ReadLine());
 
-                        marca.Deletar(codigoMarca);
+                        Marca.Deletar(codigoMarca);
+
                         break;
                     case "0":
-                        Console.WriteLine($"App encerrado");
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine($"App encerrado!");
+                        Console.ResetColor();
                         break;
                     default:
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
                         Console.WriteLine($"Opcao invalida!");
+                        Console.ResetColor();
                         break;
                 }
             } while (opcao != "0");
