@@ -37,9 +37,9 @@ namespace Projeto_produtos
             else
             {
                 Console.ForegroundColor=ConsoleColor.Red;
-                Console.WriteLine($"Marca nao encontrada.");
+                Console.WriteLine($"Marca nao encontrada, Voce tera que registrar uma nova marca! ");
                 Console.ResetColor();
-
+    
             }
 
 
